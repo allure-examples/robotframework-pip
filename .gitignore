@@ -1,0 +1,16 @@
+#IDEA Files
+.idea
+target
+*.iml
+*.ipr
+
+*__pycache__
+*.pyc
+*.swp
+build
+
+
+/.tox
+/pytest_allure_adaptor.egg-info
+/.coverage
+.cache

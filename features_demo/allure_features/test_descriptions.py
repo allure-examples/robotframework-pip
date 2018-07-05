@@ -6,7 +6,7 @@ import allure
 def test_with_print():
     """this one prints something to stdout"""
 
-    print 'Hello'
+    print('Hello')
 
 
 @allure.feature('Description')
