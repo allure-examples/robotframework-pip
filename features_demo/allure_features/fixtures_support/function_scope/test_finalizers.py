@@ -31,9 +31,9 @@ def fixture_with_failed_finalizer(request):
 
 @pytest.fixture
 def fixture_with_broken_finalizer(request):
-    def failed_finalizer():
+    def broken_finalizer():
         raise Exception('Ouch!')
-    request.addfinalizer(failed_finalizer)
+    request.addfinalizer(broken_finalizer)
 
 
 @pytest.fixture
