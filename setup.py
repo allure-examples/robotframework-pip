@@ -5,8 +5,9 @@ VERSION = '1.0'
 
 install_requires = [
     'pytest>=3.5.1',
-    'allure-pytest>=2.4.1'
-    'allure-python-commons>=2.4.1'
+    'pytest-rerunfailures>=4.1',
+    'allure-pytest>=2.5.0',
+    'allure-python-commons>=2.5.0'
 ]
 
 
