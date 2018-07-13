@@ -29,7 +29,10 @@ def function_scope_fixture_with_several_deps(function_scope_simple_fixture, func
 
 @pytest.fixture(params=[True, False], ids=['param_true', 'param_false'])
 def parametrized_fixture_with_ids(request):
-    return request.param
+    if request.param:
+        print('True')
+    else:
+        print('False')
 
 
 @allure.feature('Fixtures')

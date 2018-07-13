@@ -2,6 +2,7 @@
 This module contains basic examples of tests
 """
 import pytest
+import allure
 
 
 def test_success():
@@ -18,25 +19,32 @@ def test_skip():
     """this test is skipped"""
     pytest.skip('for a reason!')
 
+def test_broken():
+    raise Exception('oops')
 
+
+@allure.feature('Xfail')
 @pytest.mark.xfail(condition=lambda: True, reason='this test is expecting failure')
 def test_xfail_expected_failure():
     """this test is an xfail that will be marked as expected failure"""
     assert False
 
 
+@allure.feature('Xfail')
 @pytest.mark.xfail(condition=lambda: True, reason='this test is expecting failure')
 def test_xfail_unexpected_pass():
     """this test is an xfail that will be marked as unexpected success"""
     assert True
 
 
+@allure.feature('Xfail')
 @pytest.mark.xfail(condition=lambda: False, reason='this test is not expecting failure')
 def test_xfail_expected_pass():
     """this test is not expected to fail, and it passed"""
     assert True
 
 
+@allure.feature('Xfail')
 @pytest.mark.xfail(condition=lambda: False, reason='this test is not expecting failure')
 def test_xfail_unexpected_failure():
     """this test is not expected to fail, but it failed"""

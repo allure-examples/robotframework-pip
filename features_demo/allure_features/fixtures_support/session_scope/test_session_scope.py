@@ -3,6 +3,10 @@ import pytest
 
 
 @allure.step
+def step_inside_test_body():
+    pass
+
+@allure.step
 def function_scope_step():
     pass
 
@@ -27,8 +31,12 @@ def function_scope_fixture():
     function_scope_step()
 
 
-@pytest.fixture
+@pytest.fixture(params=[True, False], ids=['param_true', 'param_false'])
 def function_scope_fixture_with_finalizer(request):
+    if request.param:
+        print('True')
+    else:
+        print('False')
     def function_scope_finalizer():
         function_scope_step()
     request.addfinalizer(function_scope_finalizer)
@@ -78,11 +86,12 @@ class TestClass(object):
                                   function_scope_fixture,
                                   class_scope_fixture,
                                   module_scope_fixture):
-        pass
+        step_inside_test_body()
 
     def test_with_scoped_finalizers(self,
                                     function_scope_fixture_with_finalizer,
                                     class_scope_fixture_with_finalizer,
                                     module_scope_fixture_with_finalizer,
                                     session_scope_fixture_with_finalizer):
-        pass
+        step_inside_test_body()
+
