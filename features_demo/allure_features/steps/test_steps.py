@@ -8,7 +8,7 @@ def passing_step():
 
 
 @allure.step
-def step_with_tested_steps():
+def step_with_nested_steps():
     nested_step()
 
 
@@ -36,7 +36,7 @@ def test_with_imported_step():
 @allure.feature('Steps')
 def test_with_nested_steps():
     passing_step()
-    step_with_tested_steps()
+    step_with_nested_steps()
 
 
 @allure.feature('Steps')

@@ -25,8 +25,7 @@ def test_with_attachment_in_fixture(attach_file_in_function_scope_fixture):
 
 
 @allure.feature('Attachments')
-def test_with_attacments_in_fixture_and_finalizer(attachment_in_module_scope_fixture,
-                                                  attach_file_in_module_scope_finalizer):
+def test_with_attacments_in_fixture_and_finalizer(attach_file_in_module_scope_finalizer):
     pass
 
 
@@ -49,7 +48,8 @@ def attach_file_in_function_scope_finalizer(request):
 
 
 @pytest.fixture
-def attach_file_in_module_scope_finalizer(request):
+def attach_file_in_module_scope_fixture_with_finalizer(request):
+    allure.attach('A text attacment in module scope fixture', 'blah blah blah', allure.attachment_type.TEXT)
     def finalizer_module_scope_fixture():
         allure.attach('A text attacment in module scope finalizer', 'blah blah blah blah',
                       allure.attachment_type.TEXT)

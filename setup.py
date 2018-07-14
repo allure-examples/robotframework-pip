@@ -17,7 +17,7 @@ def main():
         version=VERSION,
         description='Allure 2 report features demo for Pytest testing framework',
         author='ehborisov',
-        packages=['bdd_annotations_demo', 'features_demo'],
+        packages=['bdd_annotations_demo', 'features_demo', 'history_demo'],
         url='https://github.com/allure-examples/allure2-pytest-demo',
         install_requires=install_requires
     )
