@@ -1,27 +1,45 @@
 #!/usr/bin/env bash
 
+print_usage_and_exit () {
+    echo "Usage: sh history_demo.sh *path to discover python tests* -n=2 -r=1"
+    echo "Options:"
+    echo "-n - a number of test runs to do (optional, default = 2)."
+    echo "-r - a number of retries for failed tests (optional, default = 1)."
+    exit $1
+}
+
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied, please specify a path for pytest to discover tests as an argument."
-    echo "Options:"
-    echo "-n - a number of test runs in (optional)."
-    echo "-r - a number of retries for failed tests (optional)."
-    exit 1
+    print_usage_and_exit 1
 fi
 
 test_runs=2
 retries=1
 
-while getopts ":n:r:" opt; do
-  case $opt in
-    n) test_runs="$OPTARG"
-    ;;
-    r) retries="$OPTARG"
-    ;;
-    \?) echo "Invalid option -$OPTARG" >&2
-        exit 1
-    ;;
-  esac
+while [ "$1" != "" ]; do
+    PARAM=`echo $1 | awk -F= '{print $1}'`
+    VALUE=`echo $1 | awk -F= '{print $2}'`
+    if [[ $1 != -* ]]; then
+        shift
+        continue
+    fi
+    case ${PARAM} in
+            -h | --help)
+                print_usage_and_exit 0
+                ;;
+            -n )
+                test_runs=$VALUE
+                ;;
+            -r)
+                retries=$VALUE
+                ;;
+            *)
+            echo "ERROR: unknown parameter \"$PARAM\""
+            print_usage_and_exit 1
+                        ;;
+    esac
+    shift
 done
 
 for i in `seq 1 ${test_runs}`; do

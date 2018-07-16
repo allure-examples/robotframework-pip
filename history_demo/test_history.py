@@ -23,6 +23,12 @@ def broken_step():
     raise Exception('Broken!')
 
 
+@allure.step
+def flaky_broken_step():
+    if random.randint(1, 6) != 1:
+        raise Exception('Broken!')
+
+
 def test_always_passing():
     passing_step()
 
@@ -40,7 +46,7 @@ def test_flaky_with_randomized_time():
 def test_broken_with_randomized_time():
     passing_step()
     time.sleep(random.randint(1, 3))
-    broken_step()
+    flaky_broken_step()
 
 
 def test_broken():
