@@ -1,10 +1,10 @@
-Allure 2 Pytest Demo
+Allure Python demo
 =====================
 
-This repository contains extensive examples of Allure 2 features that are available via
-Allure 2 plugin for Pytest testing framework.
+This repository contains extensive examples of Allure features that are available via
+Allure plugin for Pytest testing framework.
 
-- `Allure 2 Pytest plugin <https://github.com/allure-framework/allure-python/tree/master/allure-pytest>`_
+- `Allure Pytest plugin <https://github.com/allure-framework/allure-python/tree/master/allure-pytest>`_
 
 Installation and Usage
 ======================
